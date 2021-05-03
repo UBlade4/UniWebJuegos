@@ -34,6 +34,11 @@ public class Rating {
         this.date = date;
     }
 
+    public Rating() {
+
+        date = null;
+    }
+
 
     public int getId() {
         return id;

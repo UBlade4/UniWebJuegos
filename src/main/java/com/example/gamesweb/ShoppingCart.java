@@ -12,10 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
-
 @Entity
-public class ShoppingCart (@RequestBody GameService service){
+public class ShoppingCart {
 
+    @Autowired
+    ShoppingCart service;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

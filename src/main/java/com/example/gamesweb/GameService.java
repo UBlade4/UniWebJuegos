@@ -1,12 +1,14 @@
 package com.example.gamesweb;
 
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Controller;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 
-@Service
-public class GameService {
+@Controller
+public abstract class GameService implements CommandLineRunner {
 
     private Map<Integer, Game> games = new HashMap<>();
     private Map<Game, List<Rating>> ratings = new HashMap<>();
@@ -99,6 +101,7 @@ public class GameService {
         return modifiedGame;
     }
 
+
     public void addRating(Game game, List<Rating> lists){
         this.ratings.put(game, lists);
     }
@@ -149,27 +152,4 @@ public class GameService {
         return aux;
     }
 
-    public void addToCart(int id){
-        this.shoppingCart.add(this.games.get(id));
-    }
-
-    public Set<Game> getShoppingCart(){
-        return this.shoppingCart;
-    }
-
-    public Set<Game> removeShoppingCart(int id){
-        Set<Game> aux = this.shoppingCart;
-        this.shoppingCart.remove(this.games.get(id));
-        return aux;
-    }
-
-    public Set<Game> removeShoppingCart(){
-        Set<Game> aux = this.shoppingCart;
-        this.shoppingCart = new HashSet<>();
-        return aux;
-    }
-
-    public void deleteShoppingCart(){
-        this.shoppingCart.clear();
-    }
 }
