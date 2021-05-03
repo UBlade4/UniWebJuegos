@@ -1,5 +1,5 @@
 package com.example.gamesweb;
-//hola putos
+
 import java.time.LocalDateTime;
 
 public class Game {
