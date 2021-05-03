@@ -3,12 +3,23 @@ package com.example.gamesweb;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
-public class ShoppingCart {
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
-    @Autowired
-    GameService service;
+
+
+@Entity
+public class ShoppingCart (@RequestBody GameService service){
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
     //Once a product is added to cart, we'll be redirected to a shown message telling us if it's been successfully done
     @GetMapping("/AddToCart")
@@ -48,5 +59,14 @@ public class ShoppingCart {
     public String removeShoppingCart(Model model) {
         service.deleteShoppingCart();
         return "RemovedShoppingCart.html";
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    @Id
+    public Long getId() {
+        return id;
     }
 }

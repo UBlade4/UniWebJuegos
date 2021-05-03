@@ -1,8 +1,16 @@
 package com.example.gamesweb;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
+@Entity
 public class Rating {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
 
     private static int idManager = 1;
     private int id;
@@ -20,6 +28,12 @@ public class Rating {
         this.date = LocalDateTime.now();
         idManager++;
     }
+
+    public Rating(LocalDateTime date) {
+
+        this.date = date;
+    }
+
 
     public int getId() {
         return id;

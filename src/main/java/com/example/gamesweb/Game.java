@@ -1,9 +1,16 @@
 package com.example.gamesweb;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Entity
 public class Game {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
+
     private String name;
     private String platform;
     private float price;
@@ -28,6 +35,7 @@ public class Game {
         idManager++;
     }
 
+    @Id
     public int getId() {
         return id;
     }
@@ -67,4 +75,5 @@ public class Game {
     public void setDate(LocalDateTime date) {
         this.date = date;
     }
+
 }
