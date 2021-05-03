@@ -15,17 +15,14 @@ import javax.persistence.Id;
 @Entity
 public class ShoppingCart {
 
-    @Autowired
-    ShoppingCart service;
-
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     //Once a product is added to cart, we'll be redirected to a shown message telling us if it's been successfully done
     @GetMapping("/AddToCart")
     public String addToCart(Model model, @RequestParam int id) {
-        service.addToCart(id);
+        addToCart(id);
         return "AddedToCart.html";
     }
 

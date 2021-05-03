@@ -1,23 +1,31 @@
 package com.example.gamesweb;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Rating {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-
-    private static int idManager = 1;
     private int id;
+
+    @Column
+    private static int idManager = 1;
+    @Column
     private int stars;
+    @Column
     private String title;
+    @Column
     private String comment;
+    @Column
     private final LocalDateTime date;
+
+    @ManyToOne
+    private List<Game> games =new ArrayList<>();
+
 
     public Rating(int stars, String title, String comment) {
 

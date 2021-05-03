@@ -2,6 +2,8 @@ package com.example.gamesweb;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Game {
@@ -10,12 +12,29 @@ public class Game {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-
+    @Column
     private String name;
+    @Column
     private String platform;
+    @Column
     private float price;
+    @Column
     private LocalDateTime date;
+    @Column
     private static int idManager = 1;
+
+
+    @ManyToMany
+    private List<Category> categories= new ArrayList<>();
+
+
+    @ManyToOne
+    private ShoppingCart shoppingCart;
+
+
+    @OneToMany
+    private List<Rating> ratings =new ArrayList<>();
+
 
     public Game(String name, String platform, float price) {
         this.id = idManager;
@@ -35,7 +54,8 @@ public class Game {
         idManager++;
     }
 
-    @Id
+
+
     public int getId() {
         return id;
     }

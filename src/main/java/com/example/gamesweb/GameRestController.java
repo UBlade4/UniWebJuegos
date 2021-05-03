@@ -21,7 +21,6 @@ public class GameRestController {
     @Autowired
     GameService service;
 
-    ///////////////////////////  GAMES  ///////////////////////////
 
     //We get the game if it exists or an error if it doesn't
     @GetMapping("Game/{id}")

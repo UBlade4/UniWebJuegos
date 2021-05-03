@@ -19,7 +19,7 @@ public class GameController {
     GameService service;
 
     @PostConstruct
-    public void init() {
+   /* public void init() {
         Game game1 = new Game("Minecraft", "PC", 20);
         Game game2 = new Game("Far Cry 5", "PlayStation", 60);
         Game game3 = new Game("Mario Bros", "Switch", 70);
@@ -60,7 +60,7 @@ public class GameController {
         List<Rating> list4 = new ArrayList<>();
         list4.add(new Rating(4, "I love it", "Does for RollerCoaster Tycoon. what Cities Skylines did for SimCity. Its the one to own"));
         service.addRating(game4, list4);
-    }
+    }*/
 
     //When adding a new game, asked attributes will be: "name","platform" and "price"
     @GetMapping("/NewGame")
@@ -79,7 +79,7 @@ public class GameController {
 
     @GetMapping("/ShowGames/Filter")
     public String showGamesByPlatform(Model model,@RequestParam(value = "platform", defaultValue = "Any platform", required = false) String platform, @RequestParam(value = "pricemin", defaultValue = "0", required = false) int pricemin, @RequestParam(value = "pricemax", defaultValue = "0", required = false) int pricemax, @RequestParam(value = "stars", defaultValue = "-1", required = false) int stars ) {
-        model.addAttribute("games", service.getGames(platform, pricemin, pricemax, stars));
+        model.addAttribute("games", service.getGames());
         return "ShowGames";
     }
 
@@ -115,6 +115,53 @@ public class GameController {
         service.modifyGame(id, game);
         return "ModifiedGame.html";
     }
+
+
+    //We can see a game's ratings. If it doesn't exist, we'll see an error
+    @GetMapping("/Game/{id}/Ratings")
+    public String showRating(Model model, @PathVariable int id) {
+        model.addAttribute("id", id);
+        if (service.getGame(id) == null) {
+            return "error/401";
+        }
+        if (service.getRatings(id).isEmpty()) {
+            model.addAttribute("empty", true);
+        } else {
+            model.addAttribute("empty", false);
+        }
+        model.addAttribute("gameid", id);
+        model.addAttribute("ratings", service.getRatings(id));
+        return "ShowRatings";
+    }
+
+    //We'll be redirected to "NewRating" related to a game and it's id
+    @GetMapping("/Game/{id}/Ratings/CreateRating")
+    public String ratingCreation(Model model, @PathVariable int id) {
+        if (service.getGame(id) == null) {
+            return "error/401";
+        }
+        model.addAttribute("id", id);
+        model.addAttribute("game", service.getGame(id));
+        return "NewRating";
+    }
+
+
+    //We are able to create ratings, adding a title, comments and a rating with stars
+    @GetMapping("/NewRating")
+    public String newRating(Model model, @RequestParam String title, @RequestParam String comment, @RequestParam int stars, @RequestParam int id) {
+
+        Rating rating = new Rating(stars, title, comment);
+        service.addRating(id, rating);
+        return "CreatedRating.html";
+    }
+
+    @GetMapping("/DeleteRating")
+    public String deleteRating(Model model, @RequestParam int id, @RequestParam int gameid) {
+        service.deleteRating(id, gameid);
+        return "DeletedRating.html";
+    }
+
+
 
 
 }
