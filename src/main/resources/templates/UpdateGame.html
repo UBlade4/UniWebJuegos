@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1 class="box">Modify the game:</h1>
+
+
+    <form action="/ModifyGame">
+        <h2><b><u> ID: {{id}} </u></b></h2>
+        <br>
+        <input name="id" type="hidden" value="{{id}}">
+        <label>Platform: </label>
+        <br>
+        <br>
+        <!-- <input type="text" name="platform"> -->
+        <label>
+            <select name="platform">
+                <option>PC</option>
+                <option>Xbox</option>
+                <option>PlayStation</option>
+                <option>Switch</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <br>
+        <label>Price:</label>
+        <br>
+        <br>
+        <label>
+            <input min="0" name="price" step="any" type="number">
+        </label>
+        <br>
+        <br>
+        <hr style="width:25%;">
+        <input class="button" type="submit" value="SUBMIT">
+        <p>
+            <a class="button" href="/" style="background-color: darkgrey">Back to home</a>
+            <a class="button" href="/ShowGames" style="background-color: darkgrey">Back to games</a>
+        </p>
+
+
+    </form>
+</div>
+</body>
+</html>

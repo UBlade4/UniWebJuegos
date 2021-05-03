@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+{{#empty}}
+<h1 class="box">THERE ARE NO RATINGS FOR THE MOMENT</h1>
+{{/empty}}
+{{#ratings}}
+<h1>Rating: {{-index}}</h1>
+<strong>{{title}}</strong>
+<br>
+Score: <strong>{{stars}}</strong>
+<br>
+<br>
+{{comment}}
+
+<form action="/DeleteRating">
+    <input name="id" type="hidden" value="{{id}}">
+    <input name="gameid" type="hidden" value="{{gameid}}">
+    <br>
+    <input class="minibutton" type="submit" value="Delete">
+</form>
+
+
+{{/ratings}}
+<br>
+<a class="button" href="/Game/{{id}}/Ratings/CreateRating">New Rating</a>
+<a class="button" href="/ShowGames" style="background-color: darkgrey">Back to games</a>
+
+<br>
+
+</body>
+</html>

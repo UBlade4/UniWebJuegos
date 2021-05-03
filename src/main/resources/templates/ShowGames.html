@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css">
+
+</head>
+<body>
+<div class="contenedor">
+    <div class="cabecera">
+        <h1 class="box" style="text-align: center">STORE</h1>
+        <h3 style="text-align: center">Add the game you want to the cart</h3>
+    </div>
+    <div class="menu">
+        <p>
+            <a class="button" href="/" style="background-color: darkgrey">Back to home</a>
+        </p>
+        <p>
+        <a class="button" href="/NewGame.html">Add a new game</a>
+        </p>
+        <p>
+            <a class="button" href="/ShoppingCart">Show shopping cart</a>
+        </p>
+
+    </div>
+    <div class="contenido">
+        <div class="principal">
+            <br>
+            {{#games}}
+
+            <div class="game">
+                <p>
+                    Game {{-index}}:
+                </p>
+                <h4>{{name}} - {{price}}€
+                    <p>
+                        <a class="minibutton" href="/Game/{{id}}" style="text-align: right">Show
+                            details</a>
+                    </p>
+                </h4>
+            </div>
+
+            {{/games}}
+        </div>
+        <div class="secundario">
+            <p>
+                <form action="/ShowGames/Filter">
+
+                    <!-- <input type="text" name="platform"> -->
+                    <label> Platform:
+                        <select name="platform">
+                            <option>PC</option>
+                            <option>Xbox</option>
+                            <option>PlayStation</option>
+                            <option>Switch</option>
+                            <option>Any platform</option>
+
+                        </select>
+                    </label>
+            <p>
+            </p>
+            </p>
+            <p>
+                    <label>
+                        Min price: <input min="0" name="pricemin" step="any" type="number">
+                        <br>
+                        Max price: <input min="0" name="pricemax" step="any" type="number">
+                        <br>
+                    </label>
+            <p>
+            </p>
+            </p>
+            <p>
+                    <label>
+                        <input id="radio1" name="stars" type="radio" value="1">
+                        <label for="radio1">1 ★</label>
+                        <input id="radio2" name="stars" type="radio" value="2">
+                        <label for="radio2">2 ★</label>
+                        <input id="radio3" name="stars" type="radio" value="3">
+                        <label for="radio3">3 ★</label>
+                        <input id="radio4" name="stars" type="radio" value="4">
+                        <label for="radio4">4 ★</label>
+                        <input id="radio5" name="stars" type="radio" value="5">
+                        <label for="radio5">5 ★</label>
+                        <input id="radio6" name="stars" type="radio" value="999">
+                        <label for="radio6">Any stars</label>
+                    </label>
+            <p>
+                <input class="button" type="submit" value="Filter">
+            </p>
+            </form>
+            </p>
+            <br>
+            <br>
+            <br>
+            <a class="button" href="/ShowGames" style="background-color: darkgrey">Remove the filter</a>
+        </div>
+    </div>
+
+    <div class="pie">
+
+    </div>
+</div>
+</body>
+</html>

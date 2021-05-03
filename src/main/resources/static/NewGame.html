@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+
+<h1 class="box">Tell us some information about the game you want to add:</h1>
+
+    <form action="/NewGame">
+        <label>Name: </label>
+        <br>
+        <label>
+            <input name='name' type='text'>
+        </label>
+        <br>
+        <br>
+        <label>Platform: </label>
+        <br>
+        <!-- <input type="text" name="platform"> -->
+        <label>
+            <select name="platform">
+                <option>PC</option>
+                <option>Xbox</option>
+                <option>PlayStation</option>
+                <option>Switch</option>
+            </select>
+        </label>
+        <br>
+        <br>
+        <label>Price:</label>
+        <br>
+        <label>
+            <input min="0" name="price" step="any" type="number">
+        </label>
+        <br>
+        <hr style="width:25%;">
+        <input class="button" type="submit" value="SUBMIT">
+        <a class="button" href="index.html" style="background-color: darkgrey">Back to home</a>
+
+
+    </form>
+</div>
+</body>
+</html>

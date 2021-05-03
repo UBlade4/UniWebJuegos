@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+{{#game}}
+
+<h1 class="box">{{name}}</h1>
+Platform: {{platform}}
+<br>
+Price: {{price}}€
+<br>
+Average rating score: {{average}}
+<br>
+Id: {{id}}
+{{/game}}
+<br>
+
+<div>
+
+    <form action="/AddToCart" style="display: inline-block">
+        <input name="id" type="hidden" value="{{id}}">
+        <input class="minibutton" type="submit" value="Add to cart">
+    </form>
+
+    <form action="/DeleteGame" style="display: inline-block">
+        <input name="id" type="hidden" value="{{id}}">
+        <input class="minibutton" type="submit" value="Delete">
+    </form>
+    <a class="minibutton" href="/Game/{{id}}/UpdateGame">Modify</a>
+
+
+</div>
+<br>
+<a class="button" href="/Game/{{id}}/Ratings">Show ratings</a>
+<a class="button" href="/" style="background-color: darkgrey">Back to home</a>
+<a class="button" href="/ShowGames" style="background-color: darkgrey">Back to games</a>
+
+
+</body>
+</html>

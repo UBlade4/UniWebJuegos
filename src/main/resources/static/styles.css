@@ -1,0 +1,102 @@
+.button {
+    font-family: Arial, serif;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 40px;
+}
+
+
+body {
+    font-family: Arial, serif;
+    margin: 60px;
+    text-align: center;
+}
+
+.margin {
+    line-height: 200%;
+    text-align: center;
+}
+
+
+.minibutton {
+    font-family: Arial, serif;
+    background-color: lightcoral;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: left;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    border-radius: 20px;
+}
+
+textarea {
+    font-family: Arial, serif;
+    vertical-align: top;
+}
+
+.box {
+    font-family: Arial, serif;
+    color: white;
+    font-size: 18px;
+    font-weight: 400;
+    text-align: center;
+    background: #16aaff;
+    margin: 0 0 25px;
+    overflow: hidden;
+    padding: 20px;
+}
+
+h1 {
+    font-family: Arial, serif;
+    background: aqua;
+    font-size: xx-large;
+}
+
+.contenedor {
+    #background-color:red;
+
+}
+.cabecera {
+    #background-color:pink;
+
+}
+.menu {
+    text-align: left;
+
+    float: left;
+    width: 20%;
+}
+.contenido {
+    float: left;
+    width: 80%;
+
+}
+.principal {
+    float: left;
+    text-align: center;
+    width: 75%;
+}
+.game {
+    float: left;
+    width: 100%;
+}
+.secundario {
+    text-align: right;
+    float: left;
+    width: 25%;
+
+}
+
+.pie {
+    text-align: left;
+    clear: both;
+
+}

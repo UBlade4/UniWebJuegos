@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/styles.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<h1 class="box">YOUR SHOPPING CART</h1>
+
+{{#empty}}
+<p>YOUR SHOPPING CART IS EMPTY</p>
+{{/empty}}
+
+{{#cart}}
+<h2>{{name}} - {{price}}€</h2>
+Platform: {{platform}} | Id: {{id}}
+
+<form action="/RemoveGame">
+    <input name="id" type="hidden" value="{{id}}">
+    <br>
+    <input class="minibutton" type="submit" value="Remove">
+</form>
+<br>
+------------------------------------
+
+<hr style="width:25%;">
+
+<h2>{{sum}} €</h2>
+
+{{/cart}}
+<a class="button" href="/DeleteShoppingCart" style="background-color: crimson">Remove all games</a>
+<a class="button" href="/" style="background-color: darkgrey">Back to home</a>
+<a class="button" href="/ShowGames" style="background-color: darkgrey">Back to games</a>
+</body>
+</html>
