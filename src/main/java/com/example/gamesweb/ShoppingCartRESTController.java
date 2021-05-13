@@ -58,7 +58,8 @@ public class ShoppingCartRESTController {
         if (copy.isEmpty()) {
             return new ResponseEntity<>("The shopping cart is empty", HttpStatus.NOT_FOUND);
         }
-        service.removeShoppingCart();
+
+        //service.removeShoppingCart();
         return new ResponseEntity<>(copy, HttpStatus.OK);
     }
 }

@@ -12,12 +12,9 @@ public class GameService {
     @Autowired
     GameRepository gameRepository;
 
-    private Map<Integer, Game> games = new HashMap<>();
-    private Map<Game, List<Rating>> ratings = new HashMap<>();
-    private Set<Game> shoppingCart = new HashSet<>();
 
-    public Game addGame(int id, Game game){
-        return gameRepository.save(game);
+    public Game addGame(Game game){
+        return gameRepository.saveAndFlush(game);
         /*
         game.setId(id);
         this.games.put(id, game);
@@ -25,20 +22,31 @@ public class GameService {
     }
 
     public Collection<Game> getGames(){
-        return this.games.values();
+        return this.gameRepository.findAll();
+    }
+
+
+    public Game addRating(int id, Rating rating){
+        Game game = gameRepository.findById(id);
+        game.addRating(rating);
+        this.gameRepository.saveAndFlush(game);
+        return game;
+
     }
 
 
     public Game getGame(int id){
-        return this.games.get(id);
+        if(this.gameRepository.findById(id)==null){
+            return null;
+        }
+        else {
+            return this.gameRepository.findById(id);
+        }
     }
 
     public void deleteGame(int id) {
-        Game var;
-        Optional<Game> varList = gameRepository.findById(id);
-        if (!varList.isPresent()) {
-            var = varList.get();
-            gameRepository.delete(var);
+        if(this.gameRepository.findById(id)!=null){
+            gameRepository.delete(this.gameRepository.findById(id));
         }
     }
        /* Game aux = this.games.get(id);
@@ -49,24 +57,14 @@ public class GameService {
 
 
     public Game modifyGame(int id, Game modifiedGame) {
-        Game game = this.games.get(id);
-        if(modifiedGame.getName() == null){
-            modifiedGame.setName(game.getName());
-        }
-        if(modifiedGame.getPrice() == 0) {
-            modifiedGame.setPrice(game.getPrice());
-        }
-        if(modifiedGame.getPlatform() == null){
-            modifiedGame.setPlatform(game.getPlatform());
-        }
+        Game game = this.gameRepository.findById(id);
+
 
         modifiedGame.setId(id);
-        this.games.put(id, modifiedGame);
+        modifiedGame.setRatings(game.getRatings());
+        this.gameRepository.saveAndFlush(modifiedGame);
 
-        this.ratings.put(modifiedGame, this.ratings.get(game));
         return modifiedGame;
     }
-
-
 
 }

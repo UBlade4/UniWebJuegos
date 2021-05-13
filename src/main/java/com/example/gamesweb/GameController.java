@@ -18,6 +18,9 @@ public class GameController {
     @Autowired
     GameService service;
 
+    @Autowired
+    RatingService ratingService;
+
     @PostConstruct
    /* public void init() {
         Game game1 = new Game("Minecraft", "PC", 20);
@@ -92,7 +95,7 @@ public class GameController {
             return "error/401";
         }
         model.addAttribute("game", game);
-        model.addAttribute("average", service.getAverageRating(id));
+        model.addAttribute("average", ratingService.getAverageRating(id));
         return "ShowGame";
     }
 
@@ -124,13 +127,13 @@ public class GameController {
         if (service.getGame(id) == null) {
             return "error/401";
         }
-        if (service.getRatings(id).isEmpty()) {
+        if (ratingService.getRatings(id)==null) {
             model.addAttribute("empty", true);
         } else {
             model.addAttribute("empty", false);
         }
         model.addAttribute("gameid", id);
-        model.addAttribute("ratings", service.getRatings(id));
+        model.addAttribute("ratings", ratingService.getRatings(id));
         return "ShowRatings";
     }
 
@@ -151,13 +154,13 @@ public class GameController {
     public String newRating(Model model, @RequestParam String title, @RequestParam String comment, @RequestParam int stars, @RequestParam int id) {
 
         Rating rating = new Rating(stars, title, comment);
-        service.addRating(id, rating);
+        ratingService.addRating(id, rating);
         return "CreatedRating.html";
     }
 
     @GetMapping("/DeleteRating")
     public String deleteRating(Model model, @RequestParam int id, @RequestParam int gameid) {
-        service.deleteRating(id, gameid);
+        ratingService.deleteRating(id, gameid);
         return "DeletedRating.html";
     }
 

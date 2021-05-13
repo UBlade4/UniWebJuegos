@@ -21,7 +21,7 @@ public class RatingRESTController {
         if (service.getGame(id) == null) {
             return new ResponseEntity<>("The game doesn't exist", HttpStatus.NOT_FOUND);
         }
-        List<Rating> list = service.getRatings(id);
+        ShoppingCartRepository.findAll();
         if (list == null) {
             return new ResponseEntity<>("there are no ratings for this game yet", HttpStatus.NOT_FOUND);
         } else {

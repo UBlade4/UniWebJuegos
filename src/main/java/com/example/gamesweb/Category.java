@@ -36,13 +36,12 @@ public class Category {
     }
 
 
+
     public long getId(){return idCategory;}
     public void setId(long id){this.idCategory=id;}
 
     public String getName(){return nameCategory;}
     public void setName(String name){this.nameCategory=name;}
-
-
 
 
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 
 public interface RatingRepository extends JpaRepository<Rating, Integer> {
 
-    public Optional<Rating> findById(String id);
+    public Rating findById(int id);
 
     public Optional<Rating> findByStars(String stars);
 
@@ -18,6 +18,8 @@ public interface RatingRepository extends JpaRepository<Rating, Integer> {
     public Optional<Rating> findByDate(String date);
 
     public List<Rating> findByIdManager(String idManager);
+
+    public List <Rating> findAll ();
 
 
 }

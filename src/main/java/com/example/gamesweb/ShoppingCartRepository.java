@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Integer> {
 
-    public List<ShoppingCart> findById (long id);
+    public ShoppingCart findById (long id);
+
+    public List<ShoppingCart> deleteShoppingCartBy(long id);
 
 }

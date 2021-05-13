@@ -1,6 +1,8 @@
 package com.example.gamesweb;
 
 import javax.persistence.*;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +26,7 @@ public class Rating {
     private final LocalDateTime date;
 
     @ManyToOne
-    private List<Game> games =new ArrayList<>();
+    private List<Game> games;
 
 
     public Rating(int stars, String title, String comment) {
